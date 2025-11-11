@@ -6,6 +6,7 @@ export const protectRoute = async (req, res, next) => {
 		const token = req.cookies.jwt;
 		if (!token) {
 			return res.status(401).json({ error: "Unauthorized: No Token Provided" });
+			console.log("there is no token");
 		}
 
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -18,6 +19,7 @@ export const protectRoute = async (req, res, next) => {
 
 		if (!user) {
 			return res.status(404).json({ error: "User not found" });
+			console.log("there is no user");
 		}
 
 		req.user = user;
