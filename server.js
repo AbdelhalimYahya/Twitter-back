@@ -23,10 +23,10 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true })); // to parse form data
 app.use(cookieParser());
-// app.use(cors({
-//     origin: "https://twitter-ten-rust.vercel.app",
-//     credentials: true,
-// }));
+app.use(cors({
+    origin: "https://twitter-ten-rust.vercel.app",
+    credentials: true,
+}));
 
 // if (process.env.NODE_ENV === "production") {
 //     app.use(express.static(path.join(__dirname, "../frontend/dist")));
