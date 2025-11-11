@@ -36,8 +36,8 @@ app.use(cors({
     //     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
     //   }));
     
-    app.use("/api/auth",authRoutes);
-    app.use('/api/users', userRoutes);
+app.use("/api/auth",authRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use("/api/notifications", notificationRoutes);
 
