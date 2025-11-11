@@ -26,18 +26,18 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true })); // to parse form data
 app.use(cookieParser());
 app.use(cors({
-    origin: "*", // Allow all origins
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    credentials: true, // Allow cookies/auth headers
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
-  }));
-// app.use(cors({
-//     origin: "https://twitter-ten-rust.vercel.app",
-//     credentials: true,
-// }));
-
-app.use("/api/auth",authRoutes);
-app.use('/api/users', userRoutes);
+        origin: "https://twitter-ten-rust.vercel.app",
+        credentials: true,
+    }));
+    // app.use(cors({
+    //     origin: "*", // Allow all origins
+    //     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    //     credentials: true, // Allow cookies/auth headers
+    //     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
+    //   }));
+    
+    app.use("/api/auth",authRoutes);
+    app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use("/api/notifications", notificationRoutes);
 
