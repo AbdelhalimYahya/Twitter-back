@@ -7,7 +7,7 @@ import userRoutes from "./routes/user.route.js";
 import { v2 as cloudinary } from "cloudinary";
 import postRoutes from "./routes/post.route.js";
 import notificationRoutes from "./routes/notification.route.js";
-import cors from "cors";
+// import cors from "cors";
 
 dotenv.config();
 
@@ -23,18 +23,18 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true })); // to parse form data
 app.use(cookieParser());
-app.use(cors({
-    origin: "https://twitter-ten-rust.vercel.app",
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: "https://twitter-ten-rust.vercel.app",
+//     credentials: true,
+// }));
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname, "../frontend/dist")));
   
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-    });
-  }
+//     app.get("*", (req, res) => {
+//       res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+//     });
+//   }
 
 app.use("/api/auth",authRoutes);
 app.use('/api/users', userRoutes);
