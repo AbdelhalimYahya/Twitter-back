@@ -35,6 +35,20 @@ app.use(cors({
     //     credentials: true, // Allow cookies/auth headers
     //     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
     //   }));
+
+    app.use((req, res, next) => {
+        res.setHeader(
+            "Cache-Control",
+            "no-store, no-cache, must-revalidate, proxy-revalidate"
+          );
+          res.setHeader("Pragma", "no-cache");
+          res.setHeader("Expires", "0");
+        next();
+      });
+
+    //   res.setHeader("Access-Control-Allow-Origin", "https://twitter-ten-rust.vercel.app");
+    //     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    //     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     
 app.use("/api/auth",authRoutes);
 app.use('/api/users', userRoutes);
