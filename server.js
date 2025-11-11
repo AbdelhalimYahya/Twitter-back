@@ -8,8 +8,10 @@ import { v2 as cloudinary } from "cloudinary";
 import postRoutes from "./routes/post.route.js";
 import notificationRoutes from "./routes/notification.route.js";
 import cors from "cors";
+import path from "path";
 
 dotenv.config();
+const __dirname = path.resolve();
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -20,8 +22,8 @@ cloudinary.config({
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true })); // to parse form data
+// app.use(express.json({ limit: "50mb" }));
+// app.use(express.urlencoded({ limit: "50mb", extended: true })); // to parse form data
 app.use(cookieParser());
 app.use(cors({
     origin: "https://twitter-ten-rust.vercel.app",
