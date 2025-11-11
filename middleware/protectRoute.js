@@ -3,6 +3,13 @@ import jwt from "jsonwebtoken";
 
 export const protectRoute = async (req, res, next) => {
 	try {
+		res.setHeader(
+			"Cache-Control",
+			"no-store, no-cache, must-revalidate, proxy-revalidate"
+		  );
+		  res.setHeader("Pragma", "no-cache");
+		  res.setHeader("Expires", "0");
+		  
 		const token = req.cookies.token;
 		if (!token) {
 			return res.status(401).json({ error: "Unauthorized: No Token Provided from token" });
