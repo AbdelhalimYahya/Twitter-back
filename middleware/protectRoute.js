@@ -3,9 +3,9 @@ import jwt from "jsonwebtoken";
 
 export const protectRoute = async (req, res, next) => {
 	try {
-		const token = req.cookies.token;
+		const token = req.cookies.jwt;
 		if (!token) {
-			return res.status(401).json({ error: "Unauthorized: No Token Provided" });
+			return res.status(401).json({ error: "Unauthorized: No Token Provided from token" });
 			console.log("there is no token");
 		}
 
@@ -18,7 +18,7 @@ export const protectRoute = async (req, res, next) => {
 		const user = await User.findById(decoded.userId).select("-password");
 
 		if (!user) {
-			return res.status(404).json({ error: "User not found" });
+			return res.status(404).json({ error: "User not found from user" });
 			console.log("there is no user");
 		}
 

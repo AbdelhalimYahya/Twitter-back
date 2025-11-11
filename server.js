@@ -30,6 +30,11 @@ app.use(cors({
     credentials: true,
 }));
 
+app.use("/api/auth",authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
+app.use("/api/notifications", notificationRoutes);
+
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/dist")));
   
@@ -37,11 +42,6 @@ if (process.env.NODE_ENV === "production") {
       res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
     });
   }
-
-app.use("/api/auth",authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/posts', postRoutes);
-app.use("/api/notifications", notificationRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
